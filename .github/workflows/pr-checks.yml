@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Print Info
         run: |
-            echo repo_name: ${{ github.event.client_payload.repo_name }}"
-            echo repo_ref : ${{ github.event.client_payload.repo_ref }}"
-            echo repo_sha : ${{ github.event.client_payload.repo_sha }}"
+            echo repo_name: ${{ github.event.client_payload.repo_name }}
+            echo repo_ref : ${{ github.event.client_payload.repo_ref }}
+            echo repo_sha : ${{ github.event.client_payload.repo_sha }}
 
       - name: Checkout Code
         uses: actions/checkout@v4
