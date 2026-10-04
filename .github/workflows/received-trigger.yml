@@ -1,0 +1,14 @@
+name: Remote Trigger Target
+
+on:
+  # This event will only trigger a workflow run if the workflow
+  # file exists on the default branch.
+  repository_dispatch:
+    types: [start-build] # Custom event name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a cross-repo task
+        run: echo "Trigger received from Repo A!"
