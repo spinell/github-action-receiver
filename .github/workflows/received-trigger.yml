@@ -13,5 +13,6 @@ jobs:
       - name: Run a cross-repo task
         run: |
             echo "Trigger received from Repo A!"
-      - run: echo ${{ github.event.client_payload.ref }}
-      - run: echo ${{ github.event.client_payload.sha }}
+      - run: echo ${{ github.event.client_payload.repo_name }}
+      - run: echo ${{ github.event.client_payload.repo_ref }}
+      - run: echo ${{ github.event.client_payload.repo_sha }}
