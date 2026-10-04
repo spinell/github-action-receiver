@@ -1,0 +1,21 @@
+name: Remote PR Checks
+
+on:
+  # This allows external repositories to trigger this workflow
+  repository_dispatch:
+    types: [trigger-pr-checks]
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ github.event.client_payload.repo_name }}
+          ref: ${{ github.event.client_payload.ref }}
+          token: ${{ secrets.PAT }}                                 # Required if Repository A is private
+
+      - name: Run Verification Checks
+        run: |
+          echo "Running checks for ${{ github.event.client_payload.repo_name }} on branch ${{ github.event.client_payload.repo_ref }}"
